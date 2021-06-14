@@ -2,55 +2,38 @@ package models;
 
 import java.util.Date;
 
-public class HouseTransaction {
-    private Integer id;
-    private Date date;
-    protected Float price;
-    protected Float area;
+public class HouseTransaction extends Transaction{
+    private HouseType houseType;
     private String address;
+    public HouseTransaction() {};
 
-    public HouseTransaction() {
-
-    }
-
-    public HouseTransaction(Integer id, Date date, Float price, Float area, String address) {
-        this.id = id;
-        this.date = date;
-        this.price = price;
-        this.area = area;
+    public HouseTransaction(String transactionCode, Date transactionDate,
+                            Double unitPrice, Double area, HouseType houseType, String address) {
+        super(transactionCode, transactionDate, unitPrice, area);
+        this.houseType = houseType;
         this.address = address;
     }
 
-    public Integer getId() {
-        return id;
+    @Override
+    public Double getTotalPrice() {
+        return this.getArea() * this.getUnitPrice() * (houseType == HouseType.VIP ? 1 : 0.9);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public void input() {
+        super.input();
+        System.out.println("Enter house type(normal or vip): ");
+        this.houseType = getScanner().next().toLowerCase().equals("vip") ? HouseType.VIP : HouseType.NORMAL;
+        System.out.println("Enter address: ");
+        this.address = getScanner().next();
     }
 
-    public Date getDate() {
-        return date;
+    public HouseType getHouseType() {
+        return houseType;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    public Float getArea() {
-        return area;
-    }
-
-    public void setArea(Float area) {
-        this.area = area;
+    public void setHouseType(HouseType houseType) {
+        this.houseType = houseType;
     }
 
     public String getAddress() {
@@ -59,5 +42,10 @@ public class HouseTransaction {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s, houseType = %s, address = %s", super.toString(), houseType, address);
     }
 }
