@@ -37,8 +37,12 @@ public class Computer extends Product {
 
     @Override
     public void display() {
-        System.out.println("id: " + proId + "name: " + proName + "year: " + year +
-                            "price: " + price + "speed: " + speed + "producer: " + producer);
+        System.out.println("Computer's id: \n" + proId
+                        + "Computer's name \n: " + proName
+                        + "Computer's year: \n" + year
+                        + "Computer's price: \n" + price
+                        + "Computer's speed: \n" + speed
+                        + "Computer's producer: \n" + producer);
     }
 
     public String getSpeed() {

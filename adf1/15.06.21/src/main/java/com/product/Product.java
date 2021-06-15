@@ -21,7 +21,8 @@ public abstract class Product {
     }
 
     public abstract void input();
-    public abstract void display();
+
+    public abstract  void display();
 
     public String getProId() {
         return proId;
