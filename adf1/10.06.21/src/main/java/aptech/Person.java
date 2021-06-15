@@ -2,9 +2,9 @@ package aptech;
 
 import java.util.Scanner;
 
-public class Person implements Comparable<Person>{
+public class Person {
     private String name;
-    private int age;
+    private Integer age;
 
     public Scanner getScanner() {
         return new Scanner(System.in);
@@ -13,14 +13,9 @@ public class Person implements Comparable<Person>{
 
     }
 
-    public Person(String name, int age) {
+    public Person(String name, Integer age) {
         this.name = name;
         this.age = age;
-    }
-
-    @Override
-    public int compareTo(Person p) {
-        return this.getAge() - p.getAge();
     }
 
     public void display() {
@@ -42,11 +37,12 @@ public class Person implements Comparable<Person>{
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
+
 }
