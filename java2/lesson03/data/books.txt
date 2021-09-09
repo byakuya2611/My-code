@@ -1,0 +1,1 @@
+Book{bookName='A', author='a', price=19.0, publicationDate='01-01-2021', producer='KD'}
